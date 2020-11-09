@@ -8,26 +8,47 @@
       <img alt="Drapeau France" src="./assets/flag-FR.jpg" v-on:click="sayHello = sayHelloFR" />
       <img alt="Drapeau Espagne" src="./assets/flag-ES.png" v-on:click="sayHello = sayHelloES" />
       <img alt="Drapeau UK" src="./assets/flag-UK.jpg" v-on:click="sayHello = sayHelloEN" />
-      {{ sayHello || sayHelloEN }}
+    </div>
+    {{ sayHello || sayHelloEN }}
+    <!-- {{ cardsData }} -->
+    <div class="card-wrapper">
+      <Card v-for="card in cardsData" :key="card" :title="card.title" :src="card.src" :description="card.description"></Card>
     </div>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import Card from "./components/Card.vue";
 
 export default {
   name: "App",
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    Card
+  },
   data() {
     return {
+      // currentLanguage: "en",
       sayHelloFR: "Bonjour",
       sayHelloES: "Holà",
       sayHelloEN: "Hello",
-      // currentLanguage: "en",
-      sayHello: "Hello"
+      sayHello: "Hello",
+      cardsData: [
+        {
+          title: "Titre 1",
+          src: "https://media.gettyimages.com/photos/young-rabbit-on-hand-picture-id106145687",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          title: "Titre 2",
+          src: "https://media.gettyimages.com/photos/young-rabbit-on-hand-picture-id106145687",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        },
+        {
+          title: "Titre 3",
+          src: "https://media.gettyimages.com/photos/young-rabbit-on-hand-picture-id106145687",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+        }
+      ]
     };
   }
   // method: {
@@ -71,5 +92,11 @@ export default {
 }
 img {
   width: 150px;
+}
+
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 </style>
